@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="cool">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>注册</title>
+	<link rel="stylesheet" href="../css/login.css"/>
+</head>
+<body>
+<div class="container flex flex-v">
+	<div class="containers">
+		<div id="foo"></div>
+		<form name="registerForm">
+		<div class="content">
+			<div class="contents flex flex-pack-center">
+				<div id="logo"></div>
+			</div>
+			<div class="content-top">
+				<div class="list flex flex-align-center">
+					<div class="list-pic"></div>
+					<div class="list-content flex flex-align-center">
+						<input class="first" type="tel" required name="mobile" id="mobile" placeholder="输入手机号"
+							   maxlength="11">
+					</div>
+				</div>
+				<div class="list last flex flex-align-center">
+					<div class="list-pic"></div>
+					<div class="list-content flex flex-align-center">
+						<input type="tel" name="validateCode" required id="validateCode" placeholder="输入验证码"
+							   maxlength="6">
+					</div>
+					<input class="btn" id="btnSendCode" type="button" value="获取验证码"/>
+				</div>
+			</div>
+			<div class="content-middle" id="message"></div>
+			<div class="content-bottom" id="submitRegister">注 册</div>
+		</div>
+		</form>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../js/spin.min.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
+<script type="text/javascript">
+
+	//绑定浏览器缩放与加载时间
+	window.addEventListener(resizeEvt, pageEf.recalc(), false);
+	document.addEventListener('DOMContentLoaded', pageEf.recalc(), false);
+	//   解决Android 手机下, input 或 textarea 元素聚焦时, 输入法遮盖输入框bug
+
+       function androidInputBugFix(){
+        if (/Android/gi.test(navigator.userAgent)) {
+            window.addEventListener('resize', function () {
+                if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+                    window.setTimeout(function () {
+                        document.activeElement.scrollIntoViewIfNeeded();
+                    }, 0);
+                }
+            })
+        }
+    }
+
+	$("#mobile").focus();
+	$("#mobile").change(function () {
+		register.checkMobileValid();
+	});
+	$("#btnSendCode").click(function () {
+		register.sendMobileCaptcha();
+	});
+	$("#submitRegister").click(function () {
+		register.register();
+	});
+
+</script>
+</html>

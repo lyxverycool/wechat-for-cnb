@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="cool">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>工资查询</title>
+		<link rel="stylesheet" href="../../css/app.css"/>
+		<link rel="stylesheet" href="../../css/salary.css"/>
+	</head>
+	<body>
+	<div class="common-mask"></div>
+	<div id="common-progress-bar" class="common-progress-bar"></div>
+	<header>
+		<div class="headers flex">
+			<div class="header-1 flex">
+				<div class="list flex flex">
+					<select id="year" onchange="salary.changeYear()"></select><span>年</span>
+				</div>
+				<div class="list flex">
+					<select id="month"><option>请选择</option></select><span>月</span>
+				</div>
+			</div>
+			<div class="header-2 search" onclick="salary.search()">查询</div>
+		</div>
+	</header>
+
+	<div class="container">
+		<div class="containers">
+			请输入需要查询工资的时间
+		</div>
+		<!-- 有工资选择方案则显示container-1 -->
+		<div class="container-1 flex flex-align-center">
+			<span>请选择工资单</span>
+			<div class="list">
+				<select id="payName" onchange="salary.payBatch()"></select>
+			</div>
+		</div>
+		<div class="container-2">
+
+		</div>
+	</div>
+	</body>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/spin.min.js"></script>
+
+	<script src="../../js/app.js"></script>
+	<script src="../../js/salary.js"></script>
+	<script>
+	$(function(){
+		salary.getPayslipConfigs();
+	})			
+	</script>
+</html>

@@ -1,0 +1,117 @@
+.container{
+	width:100%;
+	height: 100%;
+	position:relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#logo{				
+	width: 6rem;
+	height: 3.8rem;
+	background: url(../img/login_logo.png) no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+.content{
+	position:absolute;
+	width: 100%;
+	left: 0;
+	top: 15%;
+	bottom:0;				
+}
+.content .content-container{
+	width:100%;
+	height: 15rem;
+	background: url(../img/wechat_bg.png) no-repeat;
+	background-size: cover;
+}
+.content .content-containers{
+	width:83%;
+	height: 100%;
+	margin: 0 auto;
+}
+.contents{
+
+	width: 100%;
+	height: 4.9rem;
+	margin-bottom: 2.5rem;
+}
+.content .content-top{
+	width: 100%;
+	height: 4.7rem;		
+	position: relative;
+}
+.content .content-top .list{
+	width: 100%;
+	height: 2rem;
+	border: 1px solid #d6d6d6;
+	border-radius: 0.1rem;
+}
+.content .content-top .list .list-pic{
+		width: 2rem;
+		height: 1rem;
+		margin-right: 0.5rem;
+		position: relative;
+		background: url(../img/login_icon01.png) no-repeat 0.7rem ;
+}
+.content .content-top .last {
+	margin-top: 0.6rem;
+}
+.content .content-top .last .list-pic{
+	background: url(../img/login_icon02.png) no-repeat 0.7rem 0.1rem;
+}
+.content .content-top .list-content input{
+	width: 5rem;
+	height: 1rem;
+	font-size: 0.7rem;
+	background-color:transparent;
+	color:#999;
+	border: 0;
+}
+
+.content .content-top .list-content input::-moz-placeholder{
+	color:#999;
+}
+.content .content-top .last .list-content input{
+	border: 0;
+	width: 3.5rem;
+}
+
+.content .content-top .last .btn{
+	background: #E5E5E5;
+	-webkit-appearance:none;
+	padding: 0;
+	opacity: 1;
+	border:0;
+	border-radius: 0.1rem;
+	color: #FB2929;
+	width: 4.2rem;
+	height: 1.5rem;
+	font-size: 0.6rem;
+	margin-left: 2rem;				
+}
+.content .content-middle{
+	margin-top: 0.3rem;
+	width: 100%;
+	height: 1.5rem;
+	background: rgba(0, 0, 0, 0.4);
+	color: #ed3636;
+	font-size: 0.7rem;
+	line-height: 1.5rem;
+	text-align: center;
+	border-radius: 0.1rem;
+	display: none;
+}
+.content .content-bottom{
+	margin-top: 1.4rem;
+	width: 100%;
+	height: 2rem;
+	background: #ec6952;
+	color: #fff;
+	font-size: 0.8rem;
+	line-height: 2rem;
+	text-align: center;
+	border-radius: 0.1rem;
+}
+

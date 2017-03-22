@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<title>标题</title>
+<link rel="stylesheet" href="index.css">
+
+	<style>
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				font-family:Helvetica;
+			}
+			
+			img {
+				border: 0;
+			}
+			ul,dl,dt,dd{
+				list-style:none;
+				margin:0;
+				padding:0;		
+			
+			}	
+			.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+			.flex-v{-webkit-box-orient:vertical;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}
+			.flex-1{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;}
+			.flex-align-center{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;}
+			.flex-pack-center{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}
+			.flex-pack-justify{-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
+	</style>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+			var docEl = document.documentElement,
+		    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		    recalc = function() {
+		        //设置根字体大小
+		        var myfontSize = 20 * (docEl.clientWidth/320);
+		       
+		        if(myfontSize > 30){
+		        	docEl.style.fontSize = "30px";
+		        }else{
+		        docEl.style.fontSize = 20 * (docEl.clientWidth/320) + 'px'; 
+		    	}
+		    };
+		//绑定浏览器缩放与加载时间
+		window.addEventListener(resizeEvt, recalc, false);
+		document.addEventListener('DOMContentLoaded', recalc, false);
+</script>	
+</html>

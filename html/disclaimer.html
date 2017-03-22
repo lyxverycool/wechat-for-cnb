@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>企业平台</title>
+	<link rel="stylesheet" href="../css/bootstrap.css"/>
+	<link rel="stylesheet" href="../css/common.css"/>
+	<link rel="stylesheet" href="../css/dis.css"/>
+	<script src="../js/iscroll.js"></script>
+	<script src="../js/app.js"></script>
+	<style>
+	.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+	.flex-v{-webkit-box-orient:vertical;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}
+	.flex-1{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;}
+	.flex-align-center{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;}
+	.flex-pack-center{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}
+	.flex-pack-justify{-webkit-box-pack:justify;-webkit-justify-content:space-around;-ms-flex-pack:justify;justify-content:space-around;}
+	.flex-pack-justify-f{-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
+	</style>
+</head>
+<body>
+	<header class="flex flex-pack-justify">
+        	<a href="../index.html"><img id="logo" src="../images/logo_common.png"></a>
+        	<p>PLATFORM</p>
+	</header>
+	<div id="wrapper">
+		<div id="scroller">
+		<section class="wrapper-1">
+			<div class="title">
+	        		企业平台
+	      	</div>
+			<div class="wrapper-top flex flex-align-center">
+				<p>
+				对所有HR都有用的管理平台<br/>
+				覆盖薪资核算、公积金方案、<br/>
+	        	社保方案、薪资方案、员工管理、权限管理......
+	        	</p>
+			</div>
+			<div class="list">
+	        		在这里，你可以做到......
+	      	</div>
+			<div class="box flex flex-pack-justify">
+				<div class="boxs flex flex-v">
+					<b>工作台</b><br/>
+					<span>有序工作不延误<br/>有章可循不遗漏</span><br/>
+					<img src="../images/p1.jpg"/>
+				</div>
+				<div class="boxs box-2">
+					<b>企业管理</b><br/>
+					<span>更快导入部门信息<br/>轻松应对组织变化</span><br/>
+					<img src="../images/p2.jpg"/>
+				</div>
+
+			</div>
+			<div class="box flex flex-pack-justify">
+				<div class="boxs box-1">
+					<b>员工管理</b><br/>
+					<span>人事信息简单录入<br/>各类证件按需调取</span><br/>
+					<img src="../images/p3.jpg"/>
+				</div>
+				<div class="boxs box-2">
+					<b>薪资福利</b><br/>
+					<span>高效薪资精确核算<br/>自定义社保无忧缴纳</span><br/>
+					<img src="../images/p4.jpg"/>
+				</div>
+				
+			</div>
+			<div class="box flex flex-pack-justify">
+				<div class="boxs box-1">
+					<b>员工家园</b><br/>
+					<span>查询互动更便捷<br/>薪福信息更透明</span><br/>
+					<img src="../images/p5.jpg"/>
+				</div>
+				<div class="boxs box-2">
+					<b>权限管理</b><br/>
+					<span>多角色账号自动切换<br/>自定义账号功能</span><br/>
+					<img src="../images/p6.jpg"/>
+				</div>
+				
+			</div>
+			<div class="list">
+	        		我们为你达成......
+	      	</div>
+			<div class="box flex flex-pack-justify">
+				<div class="boxs box-1">
+					<b>安全</b><br/>
+					<span>银行级安全防护<br/>数据多重备份</span><br/>
+					
+				</div>
+				<div class="boxs box-2">
+					<b>准确</b><br/>
+					<span>确保薪资核算结果无误<br/>覆盖全国主要城市的社保基数<br/>平台实时维护，参数自动更新</span>	
+				</div>				
+			</div>
+			<div class="box flex flex-pack-justify">
+				<div class="boxs box-1">
+					<b>定制化</b><br/>
+					<span>按需组合功能模块<br/>各种报表自定义生成</span>
+					
+				</div>
+				<div class="boxs box-2">
+					<b>高性价比</b><br/>
+					<span>成本低廉<br/>功能齐全<br/>满足个性化需求</span>					
+				</div>				
+			</div>
+	    </section>
+	    </div>
+	</div>
+	<footer class="flex flex-pack-justify">
+			<div class="footers footer-1">
+				<a href="../index.html">首页</a>
+			</div>
+			<div class="footers footer-2">
+				<a href="../html/disclaimer.html">企业平台</a>
+			</div>
+			<div class="footers footer-3">
+				<a href="../html/about.html">关于我们</a>
+			</div>
+			<div class="footers footer-4">
+				<a href="../html/contact.html">联系我们</a>
+			</div>
+	</footer>
+	 <script>
+             	window.onload=function(){
+    			var myScroll={};
+    			function load(){
+    				myScroll=new IScroll("#wrapper")
+    			
+    			}
+    			
+    			setTimeout(load,200);   		
+    		}
+      </script>
+</body>
+</html>

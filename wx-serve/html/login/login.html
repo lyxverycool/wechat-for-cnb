@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="cool">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>登录</title>
+		<link rel="stylesheet" href="../../css/app.css"/>
+		<link rel="stylesheet" href="../../css/login.css"/>
+	</head>
+	<body>
+	<div class="common-mask"></div>
+	<div id="common-progress-bar" class="common-progress-bar"></div>
+	<div class="common-dialog">
+		<div class="dialog-top flex flex-v">
+			<div style="margin-top:2.2rem" class="flex flex-pack-center" id="userBindTip"></div>
+			<div style="margin-top:0.5rem" class="flex flex-pack-center">您可以绑定到微信</div>
+		</div>
+		<div class="dialog-bottom flex">
+			<div class="dia dia-left flex-1" onclick="login.closeBindTip(0)">不绑定</div>
+			<div class="dia dia-right flex-1" onclick="login.closeBindTip(1)">绑定</div>
+		</div>
+	</div>
+
+	<div class="container flex flex-v">
+		<div class="content">
+			<div class="contents">
+				<div class="contents-top flex flex-v">
+					<span>薪福妹不知道你是谁，不能透露工资信息</span>
+					<span style="margin-top:0.5rem;">快来登录告诉我你是谁吧!</span>
+				</div>
+				<!--<div class="contents-bottom">手机登录</div>-->
+			</div>
+			<div class="content-container">
+				<div class="content-containers">
+					<div class="content-top">
+						<div class="list flex flex-align-center">
+							<div class="list-pic"></div>
+							<div class="list-content flex flex-align-center">
+								<input class="first" type="tel" name="mobile" id="mobile" placeholder="请输入手机号" maxlength="11">
+							</div>
+						</div>
+						<div class="list last flex flex-align-center">
+							<div class="list-pic"></div>
+							<div class="list-content flex flex-align-center">
+								<input type="tel" name="validateCode" required id="validateCode" placeholder="短信验证码"
+									   maxlength="6">
+							</div>
+							<input class="btn" id="btnSendCode" type="button" value="获取验证码"/>
+						</div>
+					</div>
+					<div class="content-middle" id="message"></div>
+					<div id="register">
+						<a href="../register/register.html">我要注册</a>
+					</div>
+					<div class="content-bottom" id="submitBut">登录</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/spin.min.js"></script>
+
+	<script src="../../js/app.js"></script>
+	<script src="../../js/login.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#mobile").focus();
+			$("#mobile").change(function () {
+				common.isExistMobile('login');
+			});
+			$("#btnSendCode").click(function () {
+				common.sendMobileCaptcha('login');
+			});
+			$("#submitBut").click(function () {
+				login.submit();
+			});
+		})
+	</script>
+</html>

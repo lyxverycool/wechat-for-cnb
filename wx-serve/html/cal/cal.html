@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="cool">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>个税计算器</title>
+		<link rel="stylesheet" href="../../css/app.css"/>
+		<link rel="stylesheet" href="../../css/cal.css"/>
+		<link rel="stylesheet" href="../../css/cal-result.css"/>
+		<link rel="stylesheet" href="../../css/LArea.css"/>
+		<link rel="stylesheet" href="../../css/swiper-3.4.0.min.css"/>
+	</head>
+	<body>
+		<header class="flex">
+			<div class="hcolor" id="cal01">
+				工资个税
+			</div>
+			<div style="width:30%" id="cal02">
+				反推税前工资
+			</div>
+			<div id="cal03">
+				年终奖
+			</div>
+			<div id="cal04">
+				劳务收入
+			</div>
+		</header>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<!-- 工资个税-->
+				<div class="swiper-slide wrapper wrapper-list-1">
+					<!-- cal为计算信息收集页 其中a1 a2,b1 b2,c1 c2,d1 d2分别为身份，社保，公积金，基数选择四个单选框类名-->
+					<div class="cal-1 cal">
+						<div class="list wrapper-1">
+							<div style="height:1.3rem;">
+							</div>
+							<div class="content-radio flex">
+								<div class="content-radio-left">
+									<span>纳税人身份</span>
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input id="a1-1" class="a1 radio1 radio-check" checked="checked" type="radio" name="shenfen1" value="中国内地"/><label for="a1-1">中国内地</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input id="a2-1" class="a2 radio1" type="radio" name="shenfen1" value="其他"/><label for="a2-1">其他</label>
+									</div>
+								</div>
+							</div>
+							<div class="content-input flex">
+								<div class="content-input-left">
+									<span>选择城市</span>
+								</div>
+								<div class="content-input-right">
+									<input id="demo1" class="radio2 city-1" type="text" readonly="" placeholder="请选择所在城市" />
+		    						<input id="value1" type="hidden" />									
+								</div>
+							</div>
+							<div class="alert alert-1"></div>
+							<div class="content-input flex" style="margin-top:0">
+								<div class="content-input-left">
+									<span>税前工资</span>
+								</div>
+								<div class="content-input-right">
+									<input class="radio2 salary salary-1" type="number" name="rels" placeholder="请输入" />
+								</div>
+							</div>
+							<div class="alert alert-2"></div>
+						</div>
+						<div class="list wrapper-2">
+							<div style="height:1.3rem;">
+							</div>
+							<div class="content-radio flex">
+								<div class="content-radio-left">
+									<span>是否缴纳社保</span>
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input id="b1-1" checked="checked" class="b1 radio1 radio-check"  type="radio" name="shebao1" value="缴纳"/><label for="b1-1">缴纳</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input id="b2-1" class="b2 radio1" type="radio" name="shebao1" value="不缴纳"/><label for="b2-1">不缴纳</label>
+									</div>
+								</div>
+							</div>
+							<div class="empty1">
+							</div>
+							<div class="content-select flex shebao" id="shebao">
+								<div class="content-select-left">
+									<span>社保缴纳基数</span>
+								</div>
+								<div class="content-select-right flex">
+									<select class="way way1-1">
+										<option>按工资</option>
+										<option>按最低标准</option>
+										<option>自定义</option>
+									</select>
+								</div>
+							</div>
+							<div class="content-input flex shebaos" id="shebaos">
+								<div class="content-input-left">
+									<span>社保缴纳基数</span>
+								</div>
+								<div class="content-input-right">
+									<input class="dis radio2 jishu jishu1-1" type="number" name="rels" placeholder="" disabled="disabled"/>
+								</div>
+							</div>
+							<div class="alert alert-3"></div>
+						</div>
+						<div class="list wrapper-3">
+							<div style="height:1.3rem;">
+							</div>
+							<div class="content-radio flex">
+								<div class="content-radio-left">
+									<span>是否缴纳公积金</span>
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input checked="checked" class="c1 radio1 radio-check" id="c1-1" type="radio" name="gongjijin1" value="缴纳"/><label for="c1-1">缴纳</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input class="c2 radio1" id="c2-1" type="radio" name="gongjijin1" value="不缴纳"/><label for="c2-1">不缴纳</label>
+									</div>
+								</div>
+							</div>
+							<div id="select-2" class="select-2 content-radio flex" style="margin-top:0.6rem">
+								<div class="content-radio-left">									
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input checked="checked" class="d1 radio1 radio-check" id="d1-1" type="radio" name="jiaona1" value="缴纳基数"/><label for="d1-1">缴纳基数</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input class="d2 radio1" id="d2-1" type="radio" name="jiaona1" value="缴存额"/><label for="d2-1">缴存额</label>
+									</div>
+								</div>
+							</div>
+							<div class="content-select flex gongjijin" id="gongjijin">
+								<div class="content-select-left">
+									<span>公积金缴纳基数</span>
+								</div>
+								<div class="content-select-right flex">
+									<select class="way way2-1">
+										<option>按工资</option>
+										<option>按最低标准</option>
+										<option>自定义</option>
+									</select>			
+								</div>
+							</div>
+							<div class="content-input flex gongjijins" id="gongjijins">
+								<div class="content-input-left">
+									<span>公积金缴纳基数</span>
+								</div>
+								<div class="content-input-right">
+									<input class="dis radio2 jishu jishu2-1" type="number" name="rels" placeholder="" disabled="disabled" />
+								</div>
+							</div>
+							<div class="alert alert-4"></div>
+							<div class="content-input bili flex" id="bili">
+								<div class="content-input-left">
+									<span>公积金缴纳比例</span>
+								</div>
+								<div class="content-input-right">
+									<input class="radio2 bili-1" type="number"  name="rels" value="12" />			
+								</div>
+							</div>
+							<div class="content-input flex cune" id="cune">
+								<div class="content-input-left">
+									<span>缴存额</span>
+								</div>
+								<div class="content-input-right">
+									<input class="radio2 cune-1" type="number"  name="rels" placeholder="请输入存额" />
+								</div>
+							</div>
+							<div class="alert alert-5"></div>
+						</div>
+						<div class="last btn1" id="btn2">
+							开始计算
+						</div>
+					</div>
+					<!-- container为计算信息收集页 -->
+					<div class="container container-1">
+						<div class="containers">
+							<div class="containers-top">
+								<span>税前工资</span>
+								<span class="right money-1-a">74255.00元</span>
+							</div>
+							<!-- money-a为a页面(工资个税)不同所得的数值 -->
+							<div class="containers-middle">
+								<div class="containers-middle-top">
+									<div class="text">
+										<span class="left">税前收入</span>
+										<span class="right money-2-a">38255.00元</span>
+									</div>
+									<div class="text">
+										<span class="left">税后收入</span>
+										<span class="right money-3-a">23255.00元</span>
+									</div>
+								</div>
+								<div class="containers-middle-bottom">
+									<div class="text">
+										<span class="left">个人缴纳公积金</span>
+										<span class="right money-4-a">700.00元</span>
+									</div>
+									<div class="text">
+										<span class="left">个人缴纳社保</span>
+										<span class="right money-5-a">400.00元</span>
+									</div>
+									<div class="text">
+										<span class="left">个人所得税</span>
+										<span class="right money-6-a">600.00元</span>
+									</div>
+								</div>
+							</div>
+							<div class="containers-bottom">
+								<div class="content">
+									由于各地工商保险略有差异，计算结果仅供查询
+								</div>
+								<div class="cal-again" id="cal-again-1">
+									重新计算
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 反推税前工资-->
+				<div class="swiper-slide wrapper wrapper-list-2">
+					<div class="cal-2 cal">
+						<div class="list wrapper-1">
+							<div style="height:1.3rem;">
+							</div>
+							<div class="content-radio flex">
+								<div class="content-radio-left">
+									<span>纳税人身份</span>
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input id="a1-2" checked="checked" class="a1 radio1 radio-check"  type="radio" name="shenfen2" value="中国内地"/><label for="a1-2">中国内地</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input id="a2-2" class="a2 radio1" type="radio" name="shenfen2" value="其他"/><label for="a2-2">其他</label>
+									</div>
+								</div>
+							</div>
+							<div class="content-input flex">
+								<div class="content-input-left">
+									<span>选择城市</span>
+								</div>
+								<div class="content-input-right">
+									<input id="demo2" class="radio2 city-2" type="text" readonly="" placeholder="请选择所在城市" />
+		    						<input id="value2" type="hidden" />	
+								</div>
+							</div>
+							<div class="alert alert-1"></div>
+							<div class="content-input flex" style="margin-top:0">
+								<div class="content-input-left">
+									<span>税后工资</span>
+								</div>
+								<div class="content-input-right">
+									<input class="radio2 salary salary-2" type="number" name="rels" placeholder="请输入" />
+								</div>
+							</div>
+							<div class="alert alert-2"></div>
+						</div>
+						<div class="list wrapper-2">
+							<div style="height:1.3rem;">
+							</div>
+							<div class="content-radio flex">
+								<div class="content-radio-left">
+									<span>是否缴纳社保</span>
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input checked="checked" id="b1-2" class="b1 radio1 radio-check"  type="radio" name="shebao2" value="缴纳"/><label for="b1-2">缴纳</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input id="b2-2" class="b2 radio1" type="radio" name="shebao2" value="不缴纳"/><label for="b2-2">不缴纳</label>
+									</div>
+								</div>
+							</div>
+							<div class="empty1">
+							</div>
+							<div class="content-select flex shebao" id="shebao">
+								<div class="content-select-left">
+									<span>社保缴纳基数</span>
+								</div>
+								<div class="content-select-right flex">
+									<select class="way way1-2">
+										<option>按工资</option>
+										<option>按最低标准</option>
+										<option>自定义</option>
+									</select>
+								</div>
+							</div>
+							<div class="content-input flex shebaos" id="shebaos">
+								<div class="content-input-left">
+									<span>社保缴纳基数</span>
+								</div>
+								<div class="content-input-right">
+									<input class="radio2 dis jishu jishu1-2" type="number" name="rels" placeholder="" disabled="disabled" />
+								</div>
+							</div>
+							<div class="alert alert-3"></div>
+						</div>
+						<div class="list wrapper-3">
+							<div style="height:1.3rem;">
+							</div>
+							<div class="content-radio flex">
+								<div class="content-radio-left">
+									<span>是否缴纳公积金</span>
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input checked="checked" class="c1 radio1 radio-check" id="c1-2" type="radio" name="gongjijin2" value="缴纳"/><label for="c1-2">缴纳</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input class="c2 radio1" id="c2-2" type="radio" name="gongjijin2" value="不缴纳"/><label for="c2-2">不缴纳</label>
+									</div>
+								</div>
+							</div>
+							<div id="select-2" class="select-2 content-radio flex" style="margin-top:0.6rem">
+								<div class="content-radio-left">
+									
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input checked="checked" class="d1 radio1 radio-check" id="d1-2" type="radio" name="jiaona2" value="缴纳基数"/><label for="d1-2">缴纳基数</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input class="d2 radio1" id="d2-2" type="radio" name="jiaona2" value="缴存额"/><label for="d2-2">缴存额</label>
+									</div>
+								</div>
+							</div>
+							<div class="content-select flex gongjijin" id="gongjijin">
+								<div class="content-select-left">
+									<span>公积金缴纳基数</span>
+								</div>
+								<div class="content-select-right flex">
+									<select class="way way2-2">
+										<option>按工资</option>
+										<option>按最低标准</option>
+										<option>自定义</option>
+									</select>			
+								</div>
+							</div>
+							<div class="content-input flex gongjijins" id="gongjijins">
+								<div class="content-input-left">
+									<span>公积金缴纳基数</span>
+								</div>
+								<div class="content-input-right">
+									<input class="dis radio2 jishu jishu2-2" type="number" name="rels" placeholder="" disabled="disabled"/>
+								</div>
+							</div>
+							<div class="alert alert-4"></div>
+							<div class="content-input bili flex" id="bili">
+								<div class="content-input-left">
+									<span>公积金缴纳比例</span>
+								</div>
+								<div class="content-input-right">
+									<input class="radio2 bili-2" type="number"  name="rels" value="12" />									
+								</div>
+							</div>
+							<div class="content-input flex cune" id="cune">
+								<div class="content-input-left">
+									<span>缴存额</span>
+								</div>
+								<div class="content-input-right">
+									<input class="radio2 cune-2" type="number"  name="rels" placeholder="请输入存额" />
+								</div>
+							</div>
+							<div class="alert alert-5"></div>
+						</div>
+						<div class="last btn2" id="btn2">
+							开始计算
+						</div>
+					</div>
+					<div class="container container-2">
+						<div class="containers">
+							<div class="containers-top">
+								<span>税后工资</span>
+								<span class="right money-1-b">74255.00元</span>
+							</div>
+							<!-- money-b为b页面(反推税前工资)不同所得的数值 -->
+							<div class="containers-middle">
+								<div class="containers-middle-top">
+									<div class="text">
+										<span class="left">税前收入</span>
+										<span class="right money-2-b">38255.00元</span>
+									</div>
+									<div class="text">
+										<span class="left">税后收入</span>
+										<span class="right money-3-b">23255.00元</span>
+									</div>
+								</div>
+								<div class="containers-middle-bottom">
+									<div class="text">
+										<span class="left">个人缴纳公积金</span>
+										<span class="right money-4-b">700.00元</span>
+									</div>
+									<div class="text">
+										<span class="left">个人缴纳社保</span>
+										<span class="right money-5-b">400.00元</span>
+									</div>
+									<div class="text">
+										<span class="left">个人所得税</span>
+										<span class="right money-6-b">600.00元</span>
+									</div>
+								</div>
+							</div>
+							<div class="containers-bottom">
+								<div class="content">
+									由于各地工商保险略有差异，计算结果仅供查询
+								</div>
+								<div class="cal-again" id="cal-again-2">
+									重新计算
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 年终奖-->
+				<div class="swiper-slide wrapper wrapper-list-3">
+					<div class="cal-3 cal">
+						<div class="revenue flex flex-align-center" >
+							<div class="content before" id="a-before" style="background: #ec6952;color:#fff;">
+								我要查税前
+							</div>
+							<div class="content  igray" id="a-after">
+								我要查税后
+							</div>
+						</div>
+						<div class="list" style="height:4.6rem;">
+							<div style="height:1.3rem;">
+							</div>
+							<div class="content-radio flex">
+								<div class="content-radio-left">
+									<span>纳税人身份</span>
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input checked="checked" class="a1 radio1 radio-check" id="a1-3" type="radio" name="shenfen3" value="中国内地"/><label for="a1-3">中国内地</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input class="a2 radio1" id="a2-3" type="radio" name="shenfen3" value="其他"/><label for="a2-3">其他</label>
+									</div>
+								</div>
+							</div>
+							<div class="content-radio flex" style="margin-top:0.7rem ;margin-left:0.2rem; color:#999;">
+								<div class="content-radio-left">
+								</div>
+								<div class="content-radio-right flex">
+									<span class="min">当月工资不低于3500元</span>
+								</div>
+							</div>
+						</div>
+					
+						<div class="list">
+							<div class="empty2">
+							</div>
+							<div class="content-input flex">
+									<div class="content-input-left">
+										<span id="a-award">税后年终奖</span>
+									</div>
+									<div class="content-input-right">
+										<input class="radio2 salary-3" type="number" name="rels" placeholder="请输入" />
+									</div>
+							</div>
+							<div style="height:1.3rem;" class="alert"></div>
+						</div>
+						<div class="last btn3" id="btn3">
+							开始计算
+						</div>
+					</div>
+					<div class="container container-3">
+						<div class="containers">
+							<div class="containers-top">
+								<span>税前年终奖</span>
+								<span class="right money-1-c">74255.00元</span>
+							</div>
+							<!-- money-c为c页面(年终奖)不同所得的数值 -->
+							<div class="containers-middle">
+								<div class="containers-middle-top">
+									<div class="text">
+										<span class="left">年终奖税</span>
+										<span class="right money-2-c">38255.00元</span>
+									</div>
+									<div class="text">
+										<span class="left">税后年终奖</span>
+										<span class="right money-3-c">23255.00元</span>
+									</div>
+								</div>
+							</div>
+							<div class="containers-bottom">
+								<div class="content">
+									计算结果仅供查询
+								</div>
+								<div class="cal-again" id="cal-again-3">
+									重新计算
+								</div>
+							</div>
+						</div>
+					</div>			
+				</div>
+				<!-- 劳务收入-->
+				<div class="swiper-slide wrapper wrapper-list-4">
+					<div class="cal-4 cal">
+						<div class="revenue flex flex-align-center" >
+							<div class="content igray" id="b-before" style="background: #ec6952;color:#fff;">
+								我要查税前
+							</div>
+							<div class="content igray" id="b-after">
+								我要查税后
+							</div>
+						</div>
+						<div class="list" style="height:4.6rem;">
+							<div style="height:1.3rem;">
+							</div>
+							<div class="content-radio flex">
+								<div class="content-radio-left">
+									<span>纳税人身份</span>
+								</div>
+								<div class="content-radio-right flex">
+									<div class="radio-1 flex flex-align-center">
+										<input checked="checked" class="a1 radio1 radio-check" id="a1-4" type="radio" name="shenfen4" value="中国内地"/><label for="a1-4">中国内地</label>
+									</div>
+									<div class="flex flex-align-center">
+										<input class="a2 radio1" id="a2-4" type="radio" name="shenfen4" value="其他"/><label for="a2-4">其他</label>
+									</div>
+								</div>
+							</div>
+							<div class="content-radio flex" style="margin-top:0.7rem ;margin-left:0.2rem; color:#999;">
+								<div class="content-radio-left">
+								</div>
+								<div class="content-radio-right flex">
+									<span class="min">当月工资不低于3500元</span>
+								</div>
+							</div>
+						</div>
+						<div class="list">
+							<div class="empty2">
+							</div>
+							<div class="content-input flex">
+									<div class="content-input-left">
+										<span id="b-award">税后劳务收入</span>
+									</div>
+									<div class="content-input-right">
+										<input class="radio2 salary-4" type="number" name="rels" placeholder="请输入" />
+									</div>
+							</div>
+							<div style="height:1.3rem;" class="alert"></div>
+						</div>
+						<div class="last btn4" id="btn4">
+							开始计算
+						</div>
+					</div>
+					<div class="container container-4">
+						<div class="containers">
+							<div class="containers-top">
+								<span>税前劳务收入</span>
+								<span class="right money-1-d">74255.00元</span>
+							</div>
+							<!-- money-d为d页面(劳务收入)不同所得的数值 -->
+							<div class="containers-middle">
+								<div class="containers-middle-top">
+									<div class="text">
+										<span class="left">劳务收入税</span>
+										<span class="right money-2-d">38255.00元</span>
+									</div>
+									<div class="text">
+										<span class="left">税后劳务收入</span>
+										<span class="right money-3-d">23255.00元</span>
+									</div>
+								</div>
+							</div>
+							<div class="containers-bottom">
+								<div class="content">
+									计算结果仅供查询
+								</div>
+								<div class="cal-again" id="cal-again-4">
+									重新计算
+								</div>
+							</div>
+						</div>
+					</div>				
+				</div>
+			</div>
+		</div>			
+	</body>
+	<script src="../../js/app.js"></script>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/LAreaData2.js"></script>
+    <script src="../../js/LArea.js"></script>
+    <script src="../../js/swiper-3.4.0.jquery.min.js"></script>
+    <script src="../../js/cal.js"></script>
+    <script>
+	var mySwiper = new Swiper ('.swiper-container', {
+    	autoHeight:true,
+    	observer:true,
+    	observeParents:true,
+	 	onSlideChangeStart:function(swiper){
+	 	 //console.log(swiper.activeIndex);
+	 	 $("header div").eq(swiper.activeIndex).addClass("hcolor").siblings().removeClass('hcolor'); 
+	 	}
+	})
+	//四个页面来回切换
+	$("header div").click(function(){
+	//console.log($(this).index());
+		mySwiper.slideTo($(this).index(), 500,false);
+		$("header div").eq($(this).index()).addClass("hcolor").siblings().removeClass('hcolor');
+	});  
+    //地理位置省市县
+    var area1 = new LArea();
+	    area1.init({
+	        'trigger': '#demo1',
+	        'valueTo': '#value1',
+	        'keys': {
+	            id: 'value',
+	            name: 'text'
+	        },
+	        'type': 2,
+	        'data': [provs_data, citys_data, dists_data]
+	});
+	var area2 = new LArea();
+	    area2.init({
+	        'trigger': '#demo2',
+	        'valueTo': '#value2',
+	        'keys': {
+	            id: 'value',
+	            name: 'text'
+	        },
+	        'type': 2,
+	        'data': [provs_data, citys_data, dists_data]
+	});
+	 
+    </script>
+</html>
